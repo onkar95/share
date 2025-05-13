@@ -1,29 +1,31 @@
-
 <div class="report-container">
+  <div class="curve-line"></div>
+
   <div class="section">
-    <div class="icon green"><span>🔍</span></div>
+    <div class="circle green"><span>🔍</span></div>
     <h3 class="title green">Professional<br>Summary</h3>
-    <p>Family wealth<br>goals on track,<br>educational trusts<br>fully funded</p>
+    <p>Family wealth goals on track,<br>educational trusts fully funded</p>
   </div>
 
   <div class="section">
-    <div class="icon blue"><span>🧠</span></div>
+    <div class="circle blue"><span>🧠</span></div>
     <h3 class="title blue">Key Risks</h3>
-    <p>Estate tax<br>exposure<br>increasing due to<br>appreciation.</p>
+    <p>Estate tax exposure increasing<br>due to appreciation.</p>
   </div>
 
   <div class="section">
-    <div class="icon teal"><span>🧬</span></div>
+    <div class="circle teal"><span>🧬</span></div>
     <h3 class="title teal">Opportunities</h3>
-    <p>New tax-efficient<br>gifting strategies<br>available</p>
+    <p>New tax-efficient gifting<br>strategies available</p>
   </div>
 
   <div class="section">
-    <div class="icon gray"><span>🗂️</span></div>
+    <div class="circle gray"><span>🗂️</span></div>
     <h3 class="title gray">Key Actions</h3>
-    <p>Review estate<br>planning<br>Update charitable<br>giving strategy.</p>
+    <p>Review estate planning<br>Update charitable giving strategy.</p>
   </div>
 </div>
+
 
 body {
   background: #1a1a1a;
@@ -34,75 +36,72 @@ body {
 }
 
 .report-container {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  padding: 40px 20px;
-  background: #1a1a1a;
-  position: relative;
+  padding: 100px 20px 40px;
+  overflow: hidden;
 }
 
 .section {
   text-align: center;
   max-width: 200px;
-  position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.icon {
+.circle {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   margin: 0 auto 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   font-size: 32px;
   color: white;
-  position: relative;
-  z-index: 2;
 }
 
-.icon.green { background-color: #5cbf5c; }
-.icon.blue { background-color: #4aa4df; }
-.icon.teal { background-color: #66cccc; }
-.icon.gray { background-color: #8b8b8b; }
+.green { background-color: #4caf50; }
+.blue { background-color: #2196f3; }
+.teal { background-color: #00bcd4; }
+.gray { background-color: #9e9e9e; }
 
 .title {
   font-size: 16px;
   font-weight: bold;
   margin: 10px 0 5px;
+  line-height: 1.2;
 }
 
-.title.green { color: #80ff80; }
-.title.blue { color: #66ccff; }
-.title.teal { color: #99ffff; }
+.title.green { color: #90ee90; }
+.title.blue { color: #00bfff; }
+.title.teal { color: #66ffff; }
 .title.gray { color: #d3bdbd; }
 
 p {
   font-size: 14px;
   line-height: 1.4;
+  color: white;
 }
 
-/* Looping yellow path (simplified mimic) */
-.report-container::before {
-  content: "";
+/* Looping line effect */
+.curve-line {
   position: absolute;
-  top: 70px;
+  top: 30px;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 150px;
   background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 40px,
-    gold 40px,
-    gold 45px,
-    transparent 45px,
-    transparent 80px
+    to right,
+    transparent 0 50px,
+    #ffcc00 50px 55px,
+    transparent 55px 100px
   );
-  z-index: 0;
-  mask-image: radial-gradient(circle, black 50%, transparent 51%);
-  opacity: 0.4;
-  }
+  z-index: 1;
+  border-top-left-radius: 75px;
+  border-bottom-right-radius: 75px;
+  opacity: 0.7;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
   
