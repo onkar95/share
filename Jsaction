@@ -1,0 +1,45 @@
+// store dropped files globally
+window.droppedFiles = [];
+
+/**
+ * @param {string} elementId
+ * @returns {Promise.<void>}
+ */
+export async function fileDrop(elementId) {
+    const dropZone = document.querySelector(".file-drop-zone");
+    const fileListContainer = document.querySelector(".dropped-items");
+
+    if (!dropZone || !fileListContainer) {
+        console.error("Required elements not found");
+        return;
+    }
+
+    // Handle drag/drop UI
+    dropZone.addEventListener("dragover", e => {
+        e.preventDefault();
+        dropZone.style.backgroundColor = "#e0f7fa";
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+        dropZone.style.backgroundColor = "#f9f9f9";
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.style.backgroundColor = "#f9f9f9";
+
+        // Save dropped files to global variable
+        window.droppedFiles = Array.from(e.dataTransfer.files);
+
+        // Clear preview
+        fileListContainer.innerHTML = "";
+
+        // Show file names
+        window.droppedFiles.forEach(file => {
+            const listItem = document.createElement("div");
+            listItem.textContent = file.webkitRelativePath || file.name;
+            listItem.className = "file-item";
+            fileListContainer.appendChild(listItem);
+        });
+    });
+}
